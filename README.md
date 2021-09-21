@@ -17,5 +17,5 @@
 
 
 <p align="center">
-  <img src="" width="250" height="150"/>
+  <img src="https://github.com/trytocatcharg/pvu-chrome-extension/blob/main/pvu-extension.jpg"/>
 </p>
