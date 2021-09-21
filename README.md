@@ -15,6 +15,11 @@
 1. Drag the `pvu-chrome-extension-main` folder anywhere on the page to import it (do not delete the folder afterwards).
 
 
+**Color information**
+
+1. If ratio pvu/month -first label- is higher than the sell price the label pvu by month will turn green
+1. If ratio le/hour -second label- is between 6.5 and 9 the label le/hour will turn yellow
+1. If ratio le/hour -second label- is higher than 9 the label le/hour will turn green
 
 <p align="center">
   <img src="https://github.com/trytocatcharg/pvu-chrome-extension/blob/main/pvu-extension.jpg"/>
