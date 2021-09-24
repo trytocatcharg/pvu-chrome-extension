@@ -53,9 +53,7 @@ setInterval(() => {
       
       if (!document.getElementById('pvu-' + plantId)) {
         insertAfter(nodeLEPerHourDiv, plantTable[i]);
-        insertAfter(nodePvuByMonthDiv, plantTable[i]);
       }
-      console.log(lePerHour);
     }
   }
 }, 1500);
