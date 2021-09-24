@@ -4,7 +4,6 @@
     "version": "0.0.1",
     "manifest_version": 3,
     "content_scripts": [{
-        "css": ["pvu-styles.css"],
         "js": ["myscript.js"],
         "run_at": "document_end",
         "matches": ["https://marketplace.plantvsundead.com/*"]
