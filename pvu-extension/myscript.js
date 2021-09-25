@@ -35,7 +35,8 @@ setInterval(() => {
                                     .lastElementChild
                                     .textContent;
       nodeLEPerHourDiv.id = 'pvu-' + plantId;
-      nodeLEPerHourDiv.innerText = lePerHour.toFixed(2) + '/Hour';
+      const harvestDays = Number(onlyHour) / 24;
+      nodeLEPerHourDiv.innerText = lePerHour.toFixed(2) + '/Hour' + ' in '+ harvestDays + ' day(s)';
       const nodePvuByMonthDiv = nodeLEPerHourDiv.cloneNode(true);
       nodePvuByMonthDiv.id = 'pvu-m' + plantId;
 
