@@ -1,7 +1,7 @@
 {
     "name": "PVU market",
     "description": "Show extra information on PVU market",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "manifest_version": 3,
     "content_scripts": [{
         "js": ["myscript.js"],
