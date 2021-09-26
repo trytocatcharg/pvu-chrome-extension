@@ -24,3 +24,7 @@
 <p align="center">
   <img src="https://github.com/trytocatcharg/pvu-chrome-extension/blob/main/pvu-extension.jpg"/>
 </p>
+
+<p align="center">
+  <img src="https://github.com/trytocatcharg/pvu-chrome-extension/blob/main/pvu-extension-dashboard.jpg"/>
+</p>
