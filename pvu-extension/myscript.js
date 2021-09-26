@@ -14,7 +14,10 @@ document.getElementsByClassName('box tw-cursor-pointer')[0]
 
 setInterval(() => {
   var plantTable = document.getElementsByClassName('tw-flex tw-justify-between tw-items-end');
+  var plantTableInDashboard = document.querySelectorAll('.tw-text-center');
+  
   if (plantTable && plantTable.length > 0) {
+    // in market place
     removeFromDom();
 
     for (var i=0, max=plantTable.length; i < max; i++) {
@@ -57,6 +60,46 @@ setInterval(() => {
       }
     }
   }
+
+
+  if (plantTableInDashboard && plantTableInDashboard.length > 0) {
+
+    for (var x=0, maxDashboard=plantTableInDashboard.length; x < maxDashboard; x++) {
+        let leHourFull = plantTableInDashboard[x].innerText;
+        let leduplicatedDiv = plantTableInDashboard[x].cloneNode(true);
+        
+        if (plantTableInDashboard[x].id) {
+          // skip it
+          continue;
+        }
+        leHourFull = leHourFull.replace('LE:', '').replace('Hour', '');
+        const onlyLE = leHourFull.split('/')[0];
+        const onlyHour = leHourFull.split('/')[1];
+        let lePerHour = (Number(onlyLE) / Number(onlyHour)).toFixed(2);
+        lePerHour = lePerHour - (lePerHour *0.05); // apply 5% tax
+
+        const plantId = plantTableInDashboard[x]
+                        .parentElement
+                        .parentElement
+                        .parentElement
+                        .getAttribute('href').replace('#/plant/', '');
+
+        leduplicatedDiv.id = 'pvu-' + plantId;
+        const harvestDays = Number(onlyHour) / 24;
+        leduplicatedDiv.innerText = lePerHour.toFixed(2) + '/Hour' + ' in '+ harvestDays + ' day(s)';
+
+        if (lePerHour >= 9) {
+          leduplicatedDiv.style.cssText += applyGoodPriceStyle();
+        } else {
+          leduplicatedDiv.style.cssText += applyBadPriceStyle(lePerHour);
+        }
+        
+        
+        if (!document.getElementById('pvu-' + plantId)) {
+          insertAfterInDashboard(leduplicatedDiv, plantTableInDashboard[x]);
+        }
+    }
+  }
 }, 1500);
 
 function calculatePvuByMonth(lePerHour) {
@@ -84,6 +127,11 @@ function applyGoodPriceStyle() {
 function insertAfter(newNode, referenceNode) {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
+
+function insertAfterInDashboard(newNode, referenceNode) {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode);
+}
+
   
 function removeFromDom() {
   const allTags = document.querySelectorAll('[id^="pvu-"]')
