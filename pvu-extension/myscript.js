@@ -46,12 +46,10 @@ setInterval(() => {
       const pvuByMonth = calculatePvuByMonth(lePerHour);
       nodePvuByMonthDiv.innerText = pvuByMonth.toFixed(2) + ' pvu by month';
 
-      if (pvuByMonth >= priceValue) {
-        nodeLEPerHourDiv.style.cssText += applyGoodPriceStyle(lePerHour);
-        nodePvuByMonthDiv.style.cssText += applyGoodPriceStyle();
+      if (lePerHour >= 9) {
+        nodeLEPerHourDiv.style.cssText += applyGoodPriceStyle();
       } else {
         nodeLEPerHourDiv.style.cssText += applyBadPriceStyle(lePerHour);
-        nodePvuByMonthDiv.style.cssText += applyBadPriceStyle();
       }
       
       
