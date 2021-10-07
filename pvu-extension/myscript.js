@@ -1,5 +1,4 @@
 
-
 setTimeout(() => {
 document.getElementsByClassName('box tw-cursor-pointer')[0]
   .addEventListener('click', function (event) {
@@ -16,7 +15,11 @@ setInterval(() => {
   var plantTable = document.getElementsByClassName('tw-flex tw-justify-between tw-items-end');
   var plantTableInDashboard = document.querySelectorAll('.tw-text-center');
   
-  if (plantTable && plantTable.length > 0) {
+  var activeMenuAppend = document.getElementById('activeElementId') 
+                            ? document.getElementById('activeElementId').innerText
+                            : getActiveMenu();
+
+  if (plantTable && plantTable.length > 0 && activeMenuAppend === 'Marketplace') {
     // in market place
     removeFromDom();
 
@@ -60,7 +63,7 @@ setInterval(() => {
   }
 
 
-  if (plantTableInDashboard && plantTableInDashboard.length > 0) {
+  if (plantTableInDashboard && plantTableInDashboard.length > 0 && activeMenuAppend === 'Dashboard') {
 
     for (var x=0, maxDashboard=plantTableInDashboard.length; x < maxDashboard; x++) {
         let leHourFull = plantTableInDashboard[x].innerText;
@@ -99,6 +102,15 @@ setInterval(() => {
     }
   }
 }, 1500);
+
+
+function getActiveMenu() {
+    var newElementInDom = document.createElement('div');
+    newElementInDom.id = 'activeElementId';
+    newElementInDom.innerText = document.querySelector('.nuxt-link-exact-active').innerText;
+    document.body.appendChild(newElementInDom);
+    return document.querySelector('.nuxt-link-exact-active').innerText;
+}
 
 function calculatePvuByMonth(lePerHour) {
   return (lePerHour * 24 * 30) / 150;
